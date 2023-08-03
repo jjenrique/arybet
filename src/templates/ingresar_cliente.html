@@ -1,0 +1,37 @@
+{% extends './base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Ingresar Nuevo Cliente</h1>
+    <form method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="form-group">
+            <label for="razon_social">Razón Social:</label>
+            <input type="text" class="form-control" id="razon_social" name="razon_social" required>
+        </div>
+        <div class="form-group">
+            <label for="rut">RUT:</label>
+            <input type="text" class="form-control" id="rut" name="rut" required>
+        </div>
+        <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input type="text" class="form-control" id="telefono" name="telefono" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="persona_de_contacto">Persona de Contacto:</label>
+            <input type="text" class="form-control" id="persona_de_contacto" name="persona_de_contacto" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cliente</button>
+    </form>
+</div>
+{% endblock %}

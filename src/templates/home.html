@@ -1,8 +1,29 @@
 {% extends './base.html' %}
 
 {% block title %}Home{% endblock %}
+{% block customCSS %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
 
 {% block body %}
-<h1>Bienvenido, {{ current_user.fullname }}</h1>
-<a class="btn btn-secondary" href="{{ url_for('logout') }}">Logout</a>
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto mx-auto">
+        <div>
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+                <a class="nav-link" href="/clientes">Clientes</a>
+                <a class="nav-link active" aria-current="page" href="/">Presupuestos</a>
+                <a class="nav-link" href="/about">Ordenes de Trabajo</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container p-4">
+        <h1>Bienvenido, {{ current_user.fullname }}</h1>
+        <a class="btn btn-secondary" href="{{ url_for('logout') }}">Logout</a>
+    </div>
+    <footer class="mt-auto">
+
+    </footer>
+</div>
 {% endblock %}

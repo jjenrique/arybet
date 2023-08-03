@@ -1,0 +1,56 @@
+{% extends './base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
+
+{% block body %}
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto mx-auto">
+        <div>
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+                <a class="nav-link active" aria-current="page" href="/clientes">Clientes</a>
+                <a class="nav-link" href="/cotizaciones">Cotizaciones</a>
+                <a class="nav-link" href="">Ordenes de Trabajo</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Tabla de Clientes</h1>
+        <!-- Botón para agregar cliente -->
+        <a href="{{ url_for('mostrar_formulario_cliente') }}" class="btn btn-primary">Agregar Cliente</a>
+        {{ pagination.info}}
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Razón Social</th>
+                        <th>RUT</th>
+                        <th>Teléfono</th>
+                        <th>Email</th>
+                        <th>Persona de Contacto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cliente in clientes %}
+                    <tr>
+                        <td>{{ cliente.razon_social }}</td>
+                        <td>{{ cliente.rut }}</td>
+                        <td>{{ cliente.telefono }}</td>
+                        <td>{{ cliente.email }}</td>
+                        <td>{{ cliente.persona_de_contacto }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {{pagination.links}}
+    </div>
+    <footer class="mt-auto">
+
+    </footer>
+</div>
+{% endblock %}
