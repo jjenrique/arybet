@@ -1,28 +1,47 @@
 {% extends './base.html' %}
-
 {% block title %}Home{% endblock %}
 {% block customCSS %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"> -->
 {% endblock %}
 
 
-{% block body %}
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <header class="mb-auto mx-auto">
-        <div>
-            <nav class="nav nav-masthead justify-content-center float-md-end">
-                <a class="nav-link" href="\clientes">Clientes</a>
-                <a class="nav-link active" aria-current="page" href="/cotizaciones">Cotizaciones</a>
-                <a class="nav-link" href="">Ordenes de Trabajo</a>
-            </nav>
-        </div>
-    </header>
+{% block header %}
+<nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Arybet</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="container">
-        <h1>Tabla de Clientes</h1>
-        {{ pagination.info}}
-        <div class="table-responsive-sm">
-            <table class="table">
+        <div class="navbar-collapse collapse" id="navbarsExample01" style="">
+            <ul class="navbar-nav me-auto mb-2">
+                <li class="nav-item">
+                    <a class="nav-link" href="/clientes">Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/cotizaciones">Cotizaciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Ordenes de trabajo</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <!-- Botón para agregar cliente -->
+    <a href="{{ url_for('mostrar_formulario_cliente') }}" class="btn btn-primary">Agregar Cotizacion</a>
+    {{ pagination.info}}
+    <div class="table-responsive-sm">
+        <table class="table">
+            <h1>Lista de Cotizaciones</h1>
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -42,11 +61,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </div>
-        {{pagination.links}}
     </div>
-    <footer class="mt-auto">
-
-    </footer>
+    {{pagination.links}}
 </div>
 {% endblock %}

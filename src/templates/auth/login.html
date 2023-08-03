@@ -8,7 +8,7 @@
 
 {% block body %}
 <form class="form-signin" action="/login" method="POST">
-    <img class="mb-4" src="{{ url_for('static', filename='img/logo-arybet.png') }}" alt="" width="80%"    >
+    <img class="img-fluid mx-auto mb-3 d-block" src="{{ url_for('static', filename='img/logo-arybet.png') }}" alt="" width="70%"    >
     {% with messages = get_flashed_messages() %}
 
     {% if messages %}
@@ -22,7 +22,7 @@
     {% endif %}
 
     {% endwith %}
-    <h1 class="h3 mb-3 fw-normal">Inicie sesión</h1>
+    <h1 class="h3 mb-3 fw-normal text-center">Inicie sesión</h1>
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <div class="form-floating">
         <input type="text" class="form-control" id="username" name="username" placeholder="Username">
